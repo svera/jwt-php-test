@@ -2,7 +2,7 @@
     "name": "svera/jwt-php-example",
     "description": "Example application of JWT over PHP",
     "require": {
-        "namshi/jose": "~2.2",
+        "firebase/php-jwt": "~2.0",
         "twig/twig": "~1.0"
     },
     "authors": [
