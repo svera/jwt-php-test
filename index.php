@@ -11,6 +11,8 @@ const SECRET = 'abracadabra';
 
 if ($_SERVER['REQUEST_URI'] == '/sign' && $_SERVER['REQUEST_METHOD'] == 'POST') {
     include_once 'sign.php';
+} elseif ($_SERVER['REQUEST_URI'] == '/restricted?action=logout' && $_SERVER['REQUEST_METHOD'] == 'GET') {
+    include_once 'restricted.php';
 } elseif ($_SERVER['REQUEST_URI'] == '/restricted' && $_SERVER['REQUEST_METHOD'] == 'GET') {
     include_once 'restricted.php';
 } elseif ($_SERVER['REQUEST_URI'] == '/') {
