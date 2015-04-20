@@ -4,7 +4,7 @@ restricted one, returning a signed JWT when login credentials are right. This to
 permission.
 
 To run it, just clone the repository, install dependencies with ```composer install``` and execute internal PHP web server using
-```index.php``` as router: ```php -S localhost:8000 index.php```
+```index.php``` as router: ```php -S localhost:8000 index.php```, then go to ```localhost:8000``` in your web browser.
 
 ## Requirements
 * PHP > 5.4
