@@ -3,7 +3,7 @@ A proof of concept of a JSON web token (JWT) use case in PHP. The app is just a 
 restricted one, returning a signed JWT when login credentials are right. This token is used in subsequent requests to verify
 permission.
 
-To run it, just clone the repository, install dependencies with ```composer install``` and execute internal php web server using 
+To run it, just clone the repository, install dependencies with ```composer install``` and execute internal PHP web server using
 ```index.php``` as router: ```php -S localhost:8000 index.php```
 
 ## Requirements
