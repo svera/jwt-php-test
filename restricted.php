@@ -1,7 +1,5 @@
 <?php
 
-require "vendor/autoload.php";
-
 if (isset($_GET['action']) && $_GET['action'] == 'logout') {
     setcookie("jwt", "", time() - 3600);
     header('Location: index.php');
