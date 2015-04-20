@@ -2,10 +2,10 @@
 
 if ($_POST['email'] == 'me@example.com' && $_POST['password'] == '123') {
     $payload = array(
-        "iss" => "http://example.org",
-        "aud" => "http://example.com",
-        "iat" => time(),
-        "nbf" => time()
+        'iss' => 'http://example.org',
+        'aud' => 'http://example.com',
+        'iat' => time(),
+        'nbf' => time()
     );
 
     $jwt = JWT::encode($payload, SECRET, 'HS256');

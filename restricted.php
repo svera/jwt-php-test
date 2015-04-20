@@ -1,12 +1,12 @@
 <?php
 
 if (isset($_GET['action']) && $_GET['action'] == 'logout') {
-    setcookie("jwt", "", time() - 3600);
-    header('Location: index.php');
+    setcookie('jwt', '', time() - 3600);
+    header('Location: /');
 }
 
 if (!$_COOKIE['jwt']) {
-    header('Location: index.php');
+    header('Location: /');
 }
 
 $claims = JWT::decode($_COOKIE['jwt'], SECRET, array('HS256'));
