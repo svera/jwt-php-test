@@ -10,5 +10,5 @@ Internally, it uses [Firebase PHP JWT library](https://github.com/firebase/php-j
 in order to keep things as simple an understandable as possible.
 
 ## Requirements
-* PHP > 5.4
+* PHP >= 5.4
 * Composer
