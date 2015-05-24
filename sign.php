@@ -1,12 +1,12 @@
 <?php
 
 if ($_POST['email'] == 'me@example.com' && $_POST['password'] == '123') {
-    $payload = array(
+    $now = new Datetime();
+    $payload = [
         'iss' => 'http://example.org',
         'aud' => 'http://example.com',
-        'iat' => time(),
-        'nbf' => time()
-    );
+        'exp' => $now->add(new DateInterval('PT'.EXPIRATION_TIME_IN_MINUTES.'M'))->getTimestamp()
+    ];
 
     $jwt = JWT::encode($payload, SECRET, 'HS256');
     setcookie('jwt', $jwt);

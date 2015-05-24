@@ -3,11 +3,10 @@
 require 'vendor/autoload.php';
 
 $loader = new Twig_Loader_Filesystem('views');
-$twig = new Twig_Environment($loader, array(
-    'cache' => false,
-));
+$twig = new Twig_Environment($loader, ['cache' => false]);
 
 const SECRET = 'abracadabra';
+const EXPIRATION_TIME_IN_MINUTES = 1;
 
 if (strtok($_SERVER['REQUEST_URI'], '?') == '/sign' && $_SERVER['REQUEST_METHOD'] == 'POST') {
     include_once 'sign.php';

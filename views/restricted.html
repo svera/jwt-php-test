@@ -23,12 +23,12 @@
   <body>
     <div class="container">
 		<h1>Restricted zone</h1>
-		<p>Try to tamper the cookie "jwt" to see what happens</p>
+		<p>This session will expire at {{expires}}.</p>
 		<p><a href="?action=logout">Logout</a></p>
 		<h2>Claims</h2>
 		<pre>{{ claims }}</pre>
         <h2>Token</h2>
-        <pre>{{ token }}</pre>
+        <pre><span class="text-primary">{{ token_header }}</span>.<span class="text-success">{{ token_payload }}</span>.<span class="text-danger">{{ token_signature }}</span></pre>
     </div> <!-- /container -->
   </body>
 </html>
