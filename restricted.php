@@ -16,7 +16,7 @@ try {
 } catch (ExpiredException $e) {
     header('Location: /?alert='.urlencode('Session expired'));
     die();
-} catch (SignatureInvalidadException $e) {
+} catch (SignatureInvalidException $e) {
     header('Location: /?alert='.urlencode('Invalid token'));
     die();
 }
