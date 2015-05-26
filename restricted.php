@@ -6,7 +6,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
     die();
 }
 
-if (!$_COOKIE['jwt']) {
+if (!isset($_COOKIE['jwt'])) {
     header('Location: /?alert='.urlencode('You need to log in to access this page'));
     die();
 }
@@ -15,6 +15,9 @@ try {
     $claims = JWT::decode($_COOKIE['jwt'], SECRET, ['HS256']);
 } catch (ExpiredException $e) {
     header('Location: /?alert='.urlencode('Session expired'));
+    die();
+} catch (SignatureInvalidadException $e) {
+    header('Location: /?alert='.urlencode('Invalid token'));
     die();
 }
 
@@ -26,17 +29,14 @@ if (!$claims) {
 
 $now = new Datetime();
 $expires = $now->add(new DateInterval('PT'.EXPIRATION_TIME_IN_MINUTES.'M'));
-// Refresh JWT expiration time
-$payload = [
-    'iss' => 'http://example.org',
-    'aud' => 'http://example.com',
-    'exp' => $expires->getTimestamp()
-];
 
-$jwt = JWT::encode($payload, SECRET, 'HS256');
+// Refresh JWT expiration time
+$claims->exp = $expires->getTimestamp();
+$jwt = JWT::encode($claims, SECRET, 'HS256');
 setcookie('jwt', $jwt);
 
 $dividedToken = explode('.', $jwt);
+
 echo $twig->render(
     'restricted.html',
     [
@@ -44,6 +44,7 @@ echo $twig->render(
         'token_header' => $dividedToken[0],
         'token_payload' => $dividedToken[1],
         'token_signature' => $dividedToken[2],
-        'expires' => $expires->format('H:i:s')
+        'expires' => $expires->format('H:i:s'),
+        'name' => $claims->name
     ]   
 );
